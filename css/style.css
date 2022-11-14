@@ -81,9 +81,9 @@ body {
   filter: brightness(0.4);
 }
 
-.thumb.active {
+.thumb.active img {
   border: 2px solid #ccc;
-  opacity: 1;
+  filter: brightness(1);
 }
 
 .navigation {
