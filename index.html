@@ -7,6 +7,13 @@
     <title>Vue Slider</title>
     <!-- Style  -->
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Javascript -->
     <script
       src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"
@@ -14,5 +21,41 @@
     ></script>
     <script src="js/app.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="slider" id="app">
+      <div
+        class="slide active"
+        tabindex="0"
+        @mouseover="carouselStop"
+        @mouseleave="carouselStart"
+      >
+        <img :src="'img/' + this.slides[this.actualElement].image" alt="" />
+        <div class="info">
+          <h2>{{ this.slides[this.actualElement].title }}</h2>
+          <p>{{ this.slides[this.actualElement].text }}</p>
+        </div>
+      </div>
+      <div class="thumbnails">
+        <div
+          v-on:click="setActualElement(index)"
+          v-for="(thumb,index) in slides"
+          class="thumb"
+          :class="index === actualElement ? 'active' : ''"
+        >
+          <img :src="'img/' + thumb.image" alt="thumb.title" />
+        </div>
+      </div>
+      <div class="navigation">
+        <i class="fas fa-chevron-left prev-btn"></i>
+        <i class="fas fa-chevron-right next-btn"></i>
+      </div>
+      <div class="navigation-visibility">
+        <div class="slide-icon active"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+      </div>
+    </div>
+  </body>
 </html>
